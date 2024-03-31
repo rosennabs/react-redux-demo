@@ -7,3 +7,4 @@ Run `npm install` to install all dependencies
 - `npm i redux react-redux` for Redux state management
 - `npm i redux-logger` for logging Redux actions and state changes (optional)
 - `npm i axios redux-thunk` axios for making HTTP requests and thunk for handling asynchronous actions with Redux (if needed)
+- `npm i --save @redux-devtools/extension` to use redux browser extension
