@@ -1,4 +1,5 @@
 import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from "./usersTypes";
+import axios from 'axios';
 
 //Define the action creators
 
@@ -41,6 +42,4 @@ const fetchUsers = () => {
   
 }
 
-export default {
-  fetchUsers
-}
+export default fetchUsers;
