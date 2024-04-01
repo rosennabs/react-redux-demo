@@ -22,10 +22,14 @@ function RenderUsers() {
       </button>
 
       {users && (
-        <section>
+        <section style={{ display: 'flex', flexWrap: 'wrap' }}>
           {users.map(user => (
-            <div key={user.id}>
-              <li>{user.name}</li>
+            <div key={user.id} style={{ backgroundColor: 'lightblue', padding: '10px', margin: '5px', flex: '0 0 20%', maxWidth: '20%' }}>
+              <div>
+                {user.name}
+              </div>
+              
+             
             </div>
           ))}
         </section>
