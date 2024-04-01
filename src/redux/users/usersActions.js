@@ -22,8 +22,25 @@ const fetchUsersFailure = (error) => {
   };
 };
 
+//Define the asynchronous action creator function
+const fetchUsers = () => {
+  return function (dispatch) {
+    dispatch(fetchUsersRequest()) //This sets loading to true
+
+      axios
+        .get("https://jsonplaceholder.typicode.com/users")
+        .then((response) => {
+          const users = response.data
+          dispatch(fetchUsersSuccess(users))
+        })
+        .catch(error => {
+      dispatch(fetchUsersFailure(error.message))
+    })
+
+  }
+  
+}
+
 export default {
-  fetchUsersRequest,
-  fetchUsersSuccess,
-  fetchUsersFailure
+  fetchUsers
 }
