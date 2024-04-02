@@ -25,11 +25,12 @@ function RenderUsers() {
     <div className='homepage'>
       <h1> Users </h1>
       <p>Click the button below to see our dummy users!</p>
-      <button onClick={handleFetchUsers} disabled={isLoading}>
+      <button onClick={()=>handleFetchUsers()} disabled={isLoading}>
         {isLoading ? 'Loading...' : 'Click me'}
       </button>
 
       {users && (
+        <div className='main-container'>
         <section className='user-container'>
           {users.map(user => (
             <div key={user.id} className='user-card'>
@@ -43,10 +44,17 @@ function RenderUsers() {
              
             </div>
           ))}
-        </section>
+          
+          </section>
+            {(users.length > 0) && (
+            <button className='close-button' onClick={()=> handleCloseButton()} >Close</button>)}
+         
+
+          </div>
       )}
 
-      <button onClick={()=> handleCloseButton()}  className='close-button'>Close</button>
+      
+      
      </div>
   )
 }
