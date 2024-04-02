@@ -1,6 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import fetchUsers from '../redux/users/usersActions'
+import '../styles/RenderUsers.css';
+import { MdOutlineEmail, MdPhoneIphone } from "react-icons/md";
+import { TbWorldWww } from "react-icons/tb";
 
 function RenderUsers() {
   
@@ -14,7 +17,7 @@ function RenderUsers() {
   };
 
   return (
-    <div>
+    <div className='homepage'>
       <h1> Users </h1>
       <p>Click the button below to see our dummy users!</p>
       <button onClick={handleFetchUsers} disabled={isLoading}>
@@ -22,11 +25,14 @@ function RenderUsers() {
       </button>
 
       {users && (
-        <section style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <section className='user-container'>
           {users.map(user => (
-            <div key={user.id} style={{ backgroundColor: 'lightblue', padding: '10px', margin: '5px', flex: '0 0 20%', maxWidth: '20%' }}>
+            <div key={user.id} className='user-card'>
               <div>
                 {user.name}
+                <p><MdOutlineEmail /> {user.email}</p>
+                <p><MdPhoneIphone /> {user.phone}</p>
+                <p><TbWorldWww /> {user.website}</p>
               </div>
               
              
