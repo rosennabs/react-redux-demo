@@ -2,6 +2,7 @@ import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
+  HANDLE_CLOSE_REQUEST,
 } from "./usersTypes";
 
 
@@ -34,6 +35,10 @@ const usersReducer = (state = initialState, action) => {
         loading: false,
         users: [],
         error: action.payload,
+      };
+    case HANDLE_CLOSE_REQUEST:
+      return {
+        initialState
       };
     default:
       return state;

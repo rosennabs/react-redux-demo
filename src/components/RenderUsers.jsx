@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import fetchUsers from '../redux/users/usersActions'
+import { fetchUsers, handleCloseRequest } from '../redux/users/usersActions'
 import '../styles/RenderUsers.css';
 import { MdOutlineEmail, MdPhoneIphone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
@@ -14,6 +14,11 @@ function RenderUsers() {
 
   const handleFetchUsers = () => {
     dispatch(fetchUsers());
+  };
+
+  const handleCloseButton = () => {
+    dispatch(handleCloseRequest())
+
   };
 
   return (
@@ -40,6 +45,8 @@ function RenderUsers() {
           ))}
         </section>
       )}
+
+      <button onClick={()=> handleCloseButton()}  className='close-button'>Close</button>
      </div>
   )
 }

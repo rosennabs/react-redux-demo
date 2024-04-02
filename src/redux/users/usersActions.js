@@ -1,4 +1,9 @@
-import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from "./usersTypes";
+import {
+  FETCH_USERS_REQUEST,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_FAILURE,
+  HANDLE_CLOSE_REQUEST,
+} from "./usersTypes";
 import axios from 'axios';
 
 //Define the action creators
@@ -23,8 +28,14 @@ const fetchUsersFailure = (error) => {
   };
 };
 
+export const handleCloseRequest = () => {
+  return {
+    type: HANDLE_CLOSE_REQUEST,
+  };
+};
+
 //Define the asynchronous action creator function
-const fetchUsers = () => {
+export const fetchUsers = () => {
   return function (dispatch) {
     dispatch(fetchUsersRequest()) //This sets loading to true
 
@@ -42,4 +53,3 @@ const fetchUsers = () => {
   
 }
 
-export default fetchUsers;
