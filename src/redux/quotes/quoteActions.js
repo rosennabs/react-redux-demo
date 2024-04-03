@@ -13,10 +13,11 @@ const fetchQuote = () => {
     axios.get("https://api.quotable.io/quotes/random")
       .then((response) => {
         const quote = response.data;
+        console.log(quote);
         dispatch(fetchUsersQuote(quote))
       })
       .catch(error => {
-      error.message
+        console.error("Error fetching quotes: ", error.message);
     })
   }
 }

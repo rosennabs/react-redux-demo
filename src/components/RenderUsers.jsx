@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsers, handleCloseRequest } from '../redux/users/usersActions'
-import fetchUsersQuote from '../redux/quotes/quoteActions';
+import fetchQuote from '../redux/quotes/quoteActions';
 import '../styles/RenderUsers.css';
 import { MdOutlineEmail, MdPhoneIphone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
@@ -9,8 +9,9 @@ import { TbWorldWww } from "react-icons/tb";
 function RenderUsers() {
   
   
-  const isLoading = useSelector(state => state.loading);
-  const users = useSelector(state => state.users);
+  const isLoading = useSelector(state => state.user.loading);
+  const users = useSelector(state => state.user.users);
+  const quote = useSelector (state => state.quote.quote)
   const dispatch = useDispatch();
 
   const handleFetchUsers = () => {
@@ -18,9 +19,14 @@ function RenderUsers() {
   };
 
   const handleCloseButton = () => {
-    dispatch(handleCloseRequest())
+    dispatch(handleCloseRequest());
 
   };
+
+  const handleFetchQuote = () => {
+    dispatch(fetchQuote());
+  };
+
 
   return (
     <div className='homepage'>
@@ -30,11 +36,22 @@ function RenderUsers() {
         {isLoading ? 'Loading...' : 'Click me'}
       </button>
 
+      {quote && (
+      <div>
+          {quote.map(quote => (
+          <div key={quote.id} className='quote-container'>
+          <p>{quote.content}</p>
+          <span className='author'>{quote.author}</span>
+            </div>
+        ))}
+        </div>
+      )}
+
       {users && (
         <div className='main-container'>
         <section className='user-container'>
           {users.map(user => (
-            <div key={user.id} className='user-card'>
+            <div key={user.id} className='user-card' onClick={()=>handleFetchQuote()}>
               <div>
                 {user.name}
                 <p><MdOutlineEmail /> {user.email}</p>
