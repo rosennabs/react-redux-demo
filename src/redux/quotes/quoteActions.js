@@ -1,4 +1,5 @@
 import { FETCH_USERS_QUOTE } from "./quoteTypes";
+import axios from "axios";
 
 const fetchUsersQuote = (quote) => {
   return {
@@ -7,4 +8,17 @@ const fetchUsersQuote = (quote) => {
   };
 }
 
-export default fetchUsersQuote;
+const fetchQuote = () => {
+  return function (dispatch) {
+    axios.get("https://api.quotable.io/quotes/random")
+      .then((response) => {
+        const quote = response.data;
+        dispatch(fetchUsersQuote(quote))
+      })
+      .catch(error => {
+      error.message
+    })
+  }
+}
+
+export default fetchQuote;
