@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsers, handleCloseRequest } from '../redux/users/usersActions'
 import fetchQuote from '../redux/quotes/quoteActions';
 import '../styles/RenderUsers.css';
-import { MdOutlineEmail, MdPhoneIphone } from "react-icons/md";
+import { MdOutlineEmail, MdPhoneIphone, MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
 function RenderUsers() {
@@ -36,11 +36,11 @@ function RenderUsers() {
       {(users.length === 0 ? (
         <button onClick={()=>handleFetchUsers()} disabled={isLoading}>
         {isLoading ? 'Loading...' : 'Click me'}
-      </button>) : null
+      </button>) : <p>Select a user below to see their favourite quotes <MdOutlineKeyboardDoubleArrowDown className='down-arrow'/></p>
       )}
       
 
-      {quote && (
+      {(users.length > 0 && quote) && (
       <div>
           {quote.map(quote => (
           <div key={quote.id} className='quote-container'>
