@@ -32,9 +32,13 @@ function RenderUsers() {
     <div className='homepage'>
       <h1> Users </h1>
       <p>Click the button below to see our dummy users!</p>
-      <button onClick={()=>handleFetchUsers()} disabled={isLoading}>
+
+      {(users.length === 0 ? (
+        <button onClick={()=>handleFetchUsers()} disabled={isLoading}>
         {isLoading ? 'Loading...' : 'Click me'}
-      </button>
+      </button>) : null
+      )}
+      
 
       {quote && (
       <div>
@@ -64,8 +68,9 @@ function RenderUsers() {
           ))}
           
           </section>
-            {(users.length > 0) && (
-            <button className='close-button' onClick={()=> handleCloseButton()} >Close</button>)}
+          {(users.length > 0 ? (
+            <button className='close-button' onClick={() => handleCloseButton()} >Close</button>) : null
+            )}
          
 
           </div>

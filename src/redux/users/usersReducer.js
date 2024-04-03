@@ -38,7 +38,7 @@ const usersReducer = (state = initialState, action) => {
       };
     case HANDLE_CLOSE_REQUEST:
       return {
-        initialState
+        ...initialState
       };
     default:
       return state;
