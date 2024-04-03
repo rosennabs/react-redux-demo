@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsers, handleCloseRequest } from '../redux/users/usersActions'
+import fetchUsersQuote from '../redux/quotes/quoteActions';
 import '../styles/RenderUsers.css';
 import { MdOutlineEmail, MdPhoneIphone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
